@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--用来简化配置，写了这个就不用配置HandlerMapping和Adpter-->
+    <mvc:annotation-driven/>
+
+    <!--配置ViewResolver视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--配置视图前缀-->
+        <property name="prefix" value="/WEB-INF/views/"></property>
+        <!--配置视图后缀-->
+        <property name="suffix" value=".jsp"></property>
+        <!--配置View,使用jsp视图技术渲染页面,如果默认使用jsp技术，可以省略不写下面的viewclass-->
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
+    </bean>
+
+    <!--配置访问路径跳转的页面，path是访问路径，view-name是页面-->
+    <mvc:view-controller path="/login" view-name="login"></mvc:view-controller>
+
+    <!--使用SpringMVC的处理方式，只要匹配到img文件夹都映射到WEB-INF/css文件夹下-->
+    <mvc:resources mapping="/css/**" location="/WEB-INF/css/"/>
+    <mvc:resources mapping="/fonts/**" location="/WEB-INF/fonts/"/>
+    <mvc:resources mapping="/iconfont/**" location="/WEB-INF/iconfont/"/>
+    <mvc:resources mapping="/images/**" location="/WEB-INF/images/"/>
+    <mvc:resources mapping="/js/**" location="/WEB-INF/js/"/>
+    <mvc:resources mapping="/layer/**" location="/WEB-INF/layer/"/>
+
+    <!--默认会加载许多内置的类型转换器，如果要使用自定义的类型转换器，需要自己指定-->
+    <mvc:annotation-driven>
+        <!--配置消息转换器-->
+        <mvc:message-converters>
+            <!--jackson消息转换器-->
+            <!--<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>-->
+            <!--gson消息转换器-->
+            <!--<bean class="org.springframework.http.converter.json.GsonHttpMessageConverter"/>-->
+            <!--fastjson消息转换器-->
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes" value="application/json"></property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+
+    <!--使用SpringMVC的处理方式，只要匹配到img文件夹都映射到WEB-INF/css文件夹下-->
+    <context:component-scan base-package="backend.Controller"></context:component-scan>
+</beans>
