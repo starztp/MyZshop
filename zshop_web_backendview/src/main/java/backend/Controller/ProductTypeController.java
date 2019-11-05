@@ -57,15 +57,23 @@ public class ProductTypeController {
 
     @RequestMapping("/findById")
     @ResponseBody
-    public ResponseResult findById(int id) throws ProductTypeExistException {
+    public ProductTypepojo findById(int id) throws ProductTypeExistException {
         ProductTypepojo productType=productTypeService.findbyid(id);
-        return ResponseResult.success(id);
+        return productType;
+        //return ResponseResult.success(id);
     }
 
-    /**
-    public ResponseResult update(int id,String name,int status) throws ProductTypeExistException {
-        ProductTypepojo productType=productTypeService.update(id,name,status);
-        return ResponseResult.success(id,na)
+    @RequestMapping("/updatename")
+    public void  updatename(int id,String name) throws ProductTypeExistException {
+        productTypeService.updatename(id,name);
     }
-    **/
+
+    @RequestMapping("/updatestatus")
+    public void updatestatus(int id,int status) throws ProductTypeExistException {
+        productTypeService.updatestatus(id,status);
+    }
+    @RequestMapping("/deletebyid")
+    public void deletebyid(int id) throws ProductTypeExistException {
+        productTypeService.deletebyid(id);
+    }
 }

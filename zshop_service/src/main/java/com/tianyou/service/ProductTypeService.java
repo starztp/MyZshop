@@ -25,5 +25,7 @@ public interface ProductTypeService {
 
     public void deletebyid(int id) throws ProductTypeExistException;
 
-    public void update(int id,String name,int status) throws ProductTypeExistException;
+    public void updatename(int id,String name) throws ProductTypeExistException;
+
+    public void updatestatus(int id,int status) throws ProductTypeExistException;
 }

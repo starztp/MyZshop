@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MyZshop.iml" filepath="$PROJECT_DIR$/MyZshop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zshop_common/zshop_common.iml" filepath="$PROJECT_DIR$/zshop_common/zshop_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zshop_dao/zshop_dao.iml" filepath="$PROJECT_DIR$/zshop_dao/zshop_dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zshop_pojo/zshop_pojo.iml" filepath="$PROJECT_DIR$/zshop_pojo/zshop_pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zshop_service/zshop_service.iml" filepath="$PROJECT_DIR$/zshop_service/zshop_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zshop_web_backendview/zshop_web_backendview.iml" filepath="$PROJECT_DIR$/zshop_web_backendview/zshop_web_backendview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zshop_web_frontview/zshop_web_frontview.iml" filepath="$PROJECT_DIR$/zshop_web_frontview/zshop_web_frontview.iml" />
+    </modules>
+  </component>
+</project>

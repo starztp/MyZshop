@@ -62,11 +62,19 @@ public class ProductServiceTypeImpl implements ProductTypeService {
     }
 
     @Override
-    public void update(int id, String name, int status) throws ProductTypeExistException {
+    public void updatename(int id, String name) throws ProductTypeExistException {
         if (productTypeDao.selectbyid(id) == null) {
             throw new ProductTypeExistException("商品类型不存在！");
         }
-        productTypeDao.update(id,name,status);
+        productTypeDao.updatename(id,name);
+    }
+
+    @Override
+    public void updatestatus(int id, int status) throws ProductTypeExistException {
+        if (productTypeDao.selectbyid(id) == null) {
+            throw new ProductTypeExistException("商品类型不存在！");
+        }
+        productTypeDao.updatestatus(id,status);
     }
 
 }

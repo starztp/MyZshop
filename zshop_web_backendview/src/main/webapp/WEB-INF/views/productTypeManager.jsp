@@ -78,10 +78,9 @@
                 '${pageContext.request.contextPath}/productType/findById',
                 {'id':id},
                 function(result){
-                    if(result.statuscode==1){
-                        $('#proTypeNum').val(result.data.id);
-                        $('#proTypeName').val(result.data.name);
-                    }
+                        $('#proTypeNum').val(result.id);
+                        $('#proTypeName').val(result.name);
+
                 }
             );
         }
