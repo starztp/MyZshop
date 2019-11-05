@@ -64,16 +64,37 @@ public class ProductTypeController {
     }
 
     @RequestMapping("/updatename")
-    public void  updatename(int id,String name) throws ProductTypeExistException {
-        productTypeService.updatename(id,name);
+    @ResponseBody
+    public ResponseResult updatename(int id,String name) {
+        try {
+            productTypeService.updatename(id,name);
+            return ResponseResult.success("修改成功");
+        } catch (ProductTypeExistException e) {
+            e.printStackTrace();
+            return ResponseResult.fail(e.getMessage());
+        }
     }
 
     @RequestMapping("/updatestatus")
-    public void updatestatus(int id,int status) throws ProductTypeExistException {
-        productTypeService.updatestatus(id,status);
+    @ResponseBody
+    public ResponseResult updatestatus(int id,int status){
+        try {
+            productTypeService.updatestatus(id,status);
+            return ResponseResult.success("修改成功");
+        } catch (ProductTypeExistException e) {
+            e.printStackTrace();
+            return ResponseResult.fail(e.getMessage());
+        }
     }
     @RequestMapping("/deletebyid")
-    public void deletebyid(int id) throws ProductTypeExistException {
-        productTypeService.deletebyid(id);
+    @ResponseBody
+    public ResponseResult deletebyid(int id) {
+        try {
+            productTypeService.deletebyid(id);
+            return ResponseResult.success("删除成功");
+        } catch (ProductTypeExistException e) {
+            e.printStackTrace();
+            return ResponseResult.fail(e.getMessage());
+        }
     }
 }

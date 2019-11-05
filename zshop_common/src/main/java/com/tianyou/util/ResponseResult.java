@@ -12,8 +12,22 @@ public class ResponseResult {
         this.data = data;
     }
 
+    public ResponseResult(int statuscode,String message) {
+        this.statuscode = statuscode;
+        this.message = message;
+
+    }
+
+    public static ResponseResult success(String message){
+        return new ResponseResult(ResponseCodeConstant.ResponseStautsSuccess,message);
+    }
+
     public static ResponseResult success(Object data){
         return new ResponseResult(ResponseCodeConstant.ResponseStautsSuccess,"success",data);
+    }
+
+    public static ResponseResult fail(Object data){
+        return new ResponseResult(ResponseCodeConstant.ResponseStatusFail,"fail",data);
     }
     //响应状态码
     private int statuscode;

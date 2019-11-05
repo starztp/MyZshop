@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="zshop_web_frontview:war">
-    <output-path>$PROJECT_DIR$/zshop_web_frontview/target</output-path>
-    <root id="archive" name="zshop_web_frontview.war">
-      <element id="artifact" artifact-name="zshop_web_frontview:war exploded" />
-    </root>
-  </artifact>
-</component>

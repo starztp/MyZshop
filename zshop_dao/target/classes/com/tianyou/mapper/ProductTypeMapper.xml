@@ -34,14 +34,20 @@
         (#{name},#{status})
     </insert>
     
-    <update id="update">
+    <update id="updatename">
         update t_product_type
-        set name=#{name},
-        status=#{status}
+        set name=#{name}
+        where id=#{id}
+    </update>
+
+    <update id="updatestatus">
+        update t_product_type
+        set status=#{status}
         where id=#{id}
     </update>
 
     <delete id="deletebyid">
-        delete
+        delete from t_product_type
+        where id=#{id}
     </delete>
 </mapper>
