@@ -14,5 +14,14 @@
         <module name="zshop_web_frontview" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="MyZshop" target="1.5" />
+      <module name="zshop_common" target="1.7" />
+      <module name="zshop_dao" target="1.7" />
+      <module name="zshop_pojo" target="1.7" />
+      <module name="zshop_service" target="1.7" />
+      <module name="zshop_web_backendview" target="1.7" />
+      <module name="zshop_web_frontview" target="1.7" />
+    </bytecodeTargetLevel>
   </component>
 </project>

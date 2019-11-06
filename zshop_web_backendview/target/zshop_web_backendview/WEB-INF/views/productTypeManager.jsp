@@ -55,18 +55,20 @@
                 '${pageContext.request.contextPath}/productType/add',
                 {'name':$('#productTypeName').val()},
                 function(result){
-                    if(result.status==1){
-                        layer.msg(result.message,{
-                            time:2000,
-                            skin:'successMsg'
-                        },function(){
-                            location.href='${pageContext.request.contextPath}/productType/findall?pageNum='+${PageInfo.pageNum};
-                        });
+                    if(result.statuscode==1){
+                        layer.msg(result.message, {
+                                time: 2000,
+                                skin: 'successMsg',
+                            },
+                            function(){
+                                //添加成功后执行刷新操作,并停留在当前页
+                                location.href='${pageContext.request.contextPath}/productType/findall?PageNum='+${PageInfo.pageNum};
+                            })
                     }else{
                         layer.msg(result.message,{
                             time:2000,
-                            skin:'errorMsg'
-                        });
+                            skin:'errorsMsg'
+                        })
                     }
                 }
             );
@@ -94,22 +96,49 @@
                 dataType:'json',
                 success:function (result) {
                     if(result.statuscode==1){
-                        layer.msg(result.message),{
-                            time:2000,
-                            skin:'successMsg',
+                        layer.msg(result.message, {
+                            time: 2000,
+                            skin: 'successMsg',
+                            },
                             function(){
                                 //修改成功后执行刷新操作,并停留在当前页
                                 location.href='${pageContext.request.contextPath}/productType/findall?PageNum='+${PageInfo.pageNum};
-                            }
-                        }
+                            })
                     }else{
-                        layer.msg(result.message),{
+                        layer.msg(result.message,{
                             time:2000,
                             skin:'errorsMsg'
-                        }
+                        })
                     }
                 }
-            })
+            });
+        }
+
+        //修改状态
+        function updatestatus(id,status) {
+            $.ajax({
+                type:'post',
+                url:'${pageContext.request.contextPath}/productType/updatestatus',
+                data:{id:id,status:status},
+                dataType:'json',
+                success:function (result) {
+                    if(result.statuscode==1){
+                        layer.msg(result.message, {
+                                time: 500,
+                                skin: 'successMsg',
+                            },
+                            function(){
+                                //修改成功后执行刷新操作,并停留在当前页
+                                location.href='${pageContext.request.contextPath}/productType/findall?PageNum='+${PageInfo.pageNum};
+                            })
+                    }else{
+                        layer.msg(result.message,{
+                            time:500,
+                            skin:'errorsMsg'
+                        })
+                    }
+                }
+            });
         }
 
         //显示删除提示
@@ -127,19 +156,19 @@
                 dataType:'json',
                 success:function (result) {
                     if(result.statuscode==1){
-                        layer.msg(result.message),{
-                            time:2000,
-                            skin:'successMsg',
+                        layer.msg(result.message, {
+                                time: 2000,
+                                skin: 'successMsg',
+                            },
                             function(){
-                                //修改成功后执行刷新操作,并停留在当前页
+                                //删除成功后执行刷新操作,并停留在当前页
                                 location.href='${pageContext.request.contextPath}/productType/findall?PageNum='+${PageInfo.pageNum};
-                            }
-                        }
+                            })
                     }else{
-                        layer.msg(result.message),{
+                        layer.msg(result.message,{
                             time:2000,
                             skin:'errorsMsg'
-                        }
+                        })
                     }
                 }
             })
@@ -178,7 +207,12 @@
                             <td class="text-center">
                                 <input type="button" class="btn btn-warning btn-sm doProTypeModify" value="修改" onclick="showProductType(${ProductTypepojo.id})">
                                 <input type="button" class="btn btn-warning btn-sm doProTypeDelete" value="删除" onclick="showdeletemodal(${ProductTypepojo.id})">
-                                <input type="button" class="btn btn-danger btn-sm doProTypeDisable" value="禁用">
+                                <c:if test="${ProductTypepojo.status==1}">
+                                <input type="button" class="btn btn-danger btn-sm doProTypeDisable" value="禁用" onclick="updatestatus(${ProductTypepojo.id},0)">
+                                </c:if>
+                                <c:if test="${ProductTypepojo.status==0}">
+                                    <input type="button" class="btn btn-danger btn-sm doProTypeDisable" value="启用" onclick="updatestatus(${ProductTypepojo.id},1)">
+                                </c:if>
                             </td>
                         </tr>
                     </c:forEach>
