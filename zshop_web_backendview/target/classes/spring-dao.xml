@@ -18,6 +18,8 @@
         <property name="dataSource" ref="dataSource"></property>
         <!--指向映射文件-->
         <property name="mapperLocations" value="classpath:com/tianyou/mapper/*.xml"></property>
+        <property name="typeAliasesPackage" value="com.tianyou.pojo"></property>
+        <!-- 分页插件pagehelper -->
         <property name="plugins">
             <list>
                 <bean class="com.github.pagehelper.PageInterceptor">

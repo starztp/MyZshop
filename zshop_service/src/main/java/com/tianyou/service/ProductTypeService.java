@@ -2,8 +2,12 @@ package com.tianyou.service;
 
 import com.tianyou.exception.ProductTypeExistException;
 import com.tianyou.pojo.ProductTypepojo;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 
 public interface ProductTypeService {
 
